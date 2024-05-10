@@ -1,0 +1,10 @@
+{
+    "signup": "true",
+    "key" : "your key",
+    "host-short" : "127.0.0.1",
+    "port-short" : "5000",
+    "db-host" : "your db-host",
+    "db-user" : "your db-user",
+    "db-pass" : "your db-pass",
+    "db-name" : "your db-name"
+}

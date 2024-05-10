@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="static/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <style>
+        *{
+            background-color: black;
+        }
+        .login{
+            text-align: center;
+            color: white;
+        }
+        .in::placeholder{
+            color: white;
+        }
+        .in{
+            color: white;
+            width: 300px;
+            height: 30px;
+            border-radius: 5px;
+            border-color: white;
+        }
+        button{
+            width: 60px;
+            height: 30px;
+            border-radius: 5px;
+            border-color: white;
+            background-color: none;
+            color: white;
+        }
+        .alert{
+            border-radius: 5px;
+            border: none;
+            color: red;
+            text-align: center;
+        }
+        .main{
+            color: white;
+            text-align: center;
+        }
+        .mi{
+            border: none;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            padding-right: 10%;
+            padding-left: 10%;
+            width: 25%;
+            height: 25px;
+        }
+        .img{
+            text-align: center;
+        }
+        img{
+            border-radius: 100%;
+        }
+        a{
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="lo()">Logout</button>
+    <div class="img"><img src="static/logo.png" alt="logo" width="100" height="100"><h2><a target="_blank" href="https://github.com/melgiri/short-me">Short Me</a></h2></div>
+    <div class="alert"><h1 id="alert"></h1></div>
+
+    <div class="login">
+    <h2>Add New Link</h2>
+    <input class="in" type="text" id="id" placeholder="ID"><br><br>
+    <input class="in" type="url" id="url" placeholder="URL"><br><br>
+    <button onclick="add()">Add</button>
+    </div>
+<br><br>
+    <div class="login">
+        <h2>DELETE A LINK</h2>
+        <input class="in" type="text" id="ida" placeholder="ID to be deleted"><br><br>
+        <button onclick="del()">Delete</button>
+    </div>
+<br><br>
+    <button onclick="reloa()">Reload</button>
+<br><br>
+
+    <script>
+
+function reloa(){
+    var elements = document.getElementsByClassName("main");
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+    relo()
+}
+        function relo(){
+            re("get")
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if(xhr.status == 200 && xhr.responseText == "ok"){
+                            var responseHeaders = xhr.getResponseHeader("res").split("||");
+
+                            var div = document.createElement("div");
+                            div.className = "main";
+                            document.body.appendChild(div);
+
+                            for(let i = 0; i<responseHeaders.length-1; i++)
+                            {
+                                var p = document.createElement("input");
+                                p.className = "mi";
+                                p.type = "text";
+                                p.value = responseHeaders[i].replaceAll(" '", "").replaceAll("'", "").replace("(", "").replace(")", "").split(",")[1];
+                                p.readOnly = true;
+                                div.appendChild(p);
+
+                                var p1 = document.createElement("input");
+                                p1.className = "mi";
+                                p1.type = "text";
+                                p1.value = responseHeaders[i].replaceAll(" '", "").replaceAll("'", "").replace("(", "").replace(")", "").split(",")[2];
+                                p1.readOnly = true;
+                                div.appendChild(p1);
+
+                                var b = document.createElement("br");
+                                div.appendChild(b);
+                                
+                            }
+                            
+                        }else {
+                        al("Something went wrong while getting data")
+                    }
+                }
+            };
+        }
+
+        var xhr = new XMLHttpRequest();
+        function lo(){
+            window.location.href = "/logout";
+        }
+        function re(ar) {
+            var id = document.getElementById('id').value;
+            var ida = document.getElementById('ida').value;
+            var url = document.getElementById('url').value;
+
+
+            xhr.open("POST", "/manage", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            if (ar == "add"){
+                xhr.send("id=" + id + "&url=" + url + "&type=add");
+            }
+            else if(ar == "del"){
+                xhr.send("id=" + ida + "&type=del");
+            }
+            else{
+                xhr.send("type=get")
+            }
+        }
+
+        function add(){
+            re("add")
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if(xhr.status == 200 && xhr.responseText == "ok"){
+                            al("Link is shortned")
+                            reloa()
+                        }else if(xhr.status == 401 && xhr.responseText == "noa"){
+                        al("you cant use this id")
+                    }
+                    else{
+                        al("Something went wrong while adding or link exist")
+                    }
+                }
+            };
+        }
+        
+        function del(){
+            re("del")
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if(xhr.status == 200 && xhr.responseText == "ok"){
+                            al("Deleted")
+                            reloa()
+                        }else {
+                        al("Something went wrong while deleting")
+                    }
+                }
+            };
+        }
+
+            function al(msg) {
+            document.getElementById('alert').innerHTML = msg;
+        }
+
+relo()
+    </script>
+</body>
+</html>
