@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="{{url_for('static', filename='logo.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Main | Short Me</title>
+</head>
+<body>
+    <div class="alert"><h1 id="alert"></h1></div>
+
+    <section id="main_page" style="display: none;">
+        <div class="top-section">
+            <a href="https://github.com/melgiri/short-me"><img src="{{url_for('static', filename='logo.png')}}"></a>
+            <div>
+                <button onclick="reloa()">Reload</button>
+                <button onclick="open_add()">Add</button>
+                <button onclick="window.location.href='/logout'">Logout</button>
+            </div>
+        </div><br>
+        <div id="main_page_div"></div>
+
+    </section>
+
+    <section id="add_page">
+        <h1 style="text-align: center; color: white; font-size: 40px;">Add Link</h1>
+        <div class="login">
+            <input id="id" placeholder="Enter the id for url"><br><br>
+            <input id="url" placeholder="Enter the url" type="url"><br><br>
+            <button onclick="add()">Add</button><br><br>
+            <button onclick="close_add()">Close</button>
+        </div>
+    </section>
+
+    <section id="del_page">
+        <h1 style="text-align: center; color: white; font-size: 40px;">Do You Want To Delete It?</h1>
+        <div class="login">
+            <input id="ida" readonly><br><br>
+            <button onclick="del()">Delete</button><br><br>
+            <button onclick="close_del()">Close</button>
+        </div>
+    </section>
+
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+</body>
+</html>

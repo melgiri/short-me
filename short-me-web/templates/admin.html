@@ -1,0 +1,13 @@
+{% if stat == True %}
+<button onclick="si('d')">Disable Signup</button>
+{% else %}
+<button onclick="si('e')">Enable Signup</button>
+{% endif %}
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<script>
+        function si(a){
+        rec("act=" + a, "/admin")
+        window.location.href = "/admin"
+        }
+</script>

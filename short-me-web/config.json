@@ -1,0 +1,10 @@
+{
+    "key" : "",
+    "sign" : "yoursecret",
+    "host": "host-ip",
+    "port": "host-port",
+    "db-host" : "db-host",
+    "db-user" : "db-user",
+    "db-pass" : "db-pass",
+    "db-name" : "short-me"
+}

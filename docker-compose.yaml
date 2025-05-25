@@ -1,0 +1,39 @@
+version: '3'
+
+networks:
+  short-me-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.10.0.0/24"
+
+services:
+  db:
+    image: mysql
+    container_name: short-me-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ROOT_PASS
+      MYSQL_DATABASE: short-me
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      short-me-network:
+        ipv4_address: "10.10.0.3"
+  web:
+    image: python
+    container_name: short-me-web
+    depends_on:
+      - db
+    volumes:
+      - ./short-me-web:/root
+    environment:
+      - DOCKER=true
+      - db-host=10.10.0.3
+      - db-pass=ROOT_PASS
+      - db-name=short-me
+    ports:
+      - "5000:5000"
+    entrypoint: /root/setup.sh
+    networks:
+      short-me-network:
+        ipv4_address: "10.10.0.2"

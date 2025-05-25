@@ -1,0 +1,101 @@
+*{
+    background-color: black;
+}
+.login{
+    text-align: center;
+    color: white;
+}
+input::placeholder{
+    color: white;
+}
+
+.login input{
+    color: white;
+    font-size: 35px;
+    width: 500px;
+    height: 50px;
+    border-radius: 100px;
+    border-color: white;
+}
+
+.login button{
+    border-radius: 100px;
+    width: 150px;
+    height: 50px;
+    font-size: 35px;
+}
+
+button{
+    /* width: 60px;
+    height: 30px; */
+    border-color: white;
+    background-color: none;
+    color: white;
+}
+.alert{
+    border-radius: 5px;
+    border: none;
+    color: red;
+    text-align: center;
+}
+
+.top-section {
+    background-color: purple;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-section img {
+    display: inline-block;
+    width: 80px; /* Adjust the size of the circle */
+    height: 80px; /* Adjust the size of the circle */
+    background-color: red;
+    border-radius: 50%; /* Makes it a circle */
+}
+.top-section a {
+    display: inline-block;
+    width: 80px; /* Adjust the size of the circle */
+    height: 80px; /* Adjust the size of the circle */
+    background-color: red;
+    border-radius: 50%;/* Makes it a circle */
+}
+
+.top-section div{
+    background-color: purple;
+}
+
+.top-section button {
+    border-radius: 100px;
+    color: white;
+    padding: 10px 15px;
+    border-color: white;
+    cursor: pointer;
+    height: 80px;
+    width: 150px;
+    font-size: 30px;
+}
+
+.input-section {
+    display: flex;
+    gap: 20px;
+}
+
+.input-section input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+.input-section button {
+    border-radius: 100px;
+    color: white;
+    padding: 10px 15px;
+    border-color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
