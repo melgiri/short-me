@@ -26,8 +26,6 @@
 
 * Open `docker-compose.yaml` and replace `ROOT_PASS` with the password for root user in database.
 
-* If you want backup for your data in database create a folder `your-folder-name` in short-me folder and add `- ./your-folder-name:/var/lib/mysql` below the `- ./schema.sql:/docker-entrypoint-initdb.d/schema.sql`
-
 * Run `docker-compose up -d` to start the application
 
 </ul>
