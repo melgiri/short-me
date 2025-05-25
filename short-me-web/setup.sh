@@ -7,8 +7,8 @@ if [ ! -f "$FIRST_RUN_MARKER" ]; then
   cd /root
   python3 setup.py
   sleep 10
-  python3 main.py
   touch "$FIRST_RUN_MARKER"
+  python3 main.py
 else
   cd /root
   sleep 10
