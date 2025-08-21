@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        /* General body and typography styles for a dark theme */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* Error Container and Card Styling */
+        .error-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 3rem 2rem;
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+        }
+
+        /* Logo and Heading */
+        .logo-section {
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            color: #bb86fc;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .logo-text {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Error Message Styling */
+        .error-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #cf6679; /* A reddish color for the error message */
+            margin-bottom: 1rem;
+        }
+        
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-home {
+            background-color: #03dac6;
+            color: #121212;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-home:hover {
+            background-color: #03a08d;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <link rel="icon" href="/static/logo.svg" type="image/x-icon">
+</head>
+<body>
+
+    <div class="error-container">
+        <div class="logo-section">
+            <img src="/static/logo.svg" style="height: 150px;width: 150px;border: 2px cyan solid;border-radius: 100px;">
+            <p class="logo-text">Short Me</p>
+        </div>
+
+        <h2 class="error-heading">{{ e }}</h2>
+
+        <a href="/" class="btn btn-home">Go to Home</a>
+    </div>
+
+</body>
+</html>

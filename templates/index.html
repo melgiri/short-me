@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{url_for('static', filename='logo.svg')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main | Short Me</title>
+</head>
+<body>
+
+    <!-- Header Bar -->
+    <header class="header">
+        <div class="logo"><a href="https://github.com/melgiri/short-me"><img src="{{url_for('static', filename='logo.svg')}}" alt="Logo" style="width: 80px;height: 80px;border-radius: 100px;border: 2px cyan solid;"></a></div>
+        <div class="header-buttons">
+            <button class="btn btn-reload" id="reload-btn">Reload</button>
+            <button class="btn btn-add" id="add-btn">Add</button>
+            <button class="btn btn-logout" id="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content container">
+        <div class="data-container" id="data-container">
+            <!-- Data rows will be dynamically inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Pop-up Modal -->
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <h3>Add New Link</h3>
+            <div class="form-group">
+                <input type="text" id="field1-input" placeholder="Enter value for id">
+            </div>
+            <div class="form-group">
+                <input type="url" id="field2-input" placeholder="Enter value for url">
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-reload" id="cancel-btn">Cancel</button>
+                <button class="btn btn-add" id="save-btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+
+</body>
+</html>
